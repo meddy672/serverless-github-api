@@ -41,8 +41,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Install dependencies
         run: npm ci
-      - name: deploy
-        uses: "suprgames/serverless-github-action@v1.77"
+      - name: Deploy
+        run: npm run deply
         with:
           command: deploy
           args: -v
