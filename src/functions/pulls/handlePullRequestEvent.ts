@@ -87,9 +87,8 @@ export async function handleOpenPullRequestEvent(event: APIGatewayProxyEvent, lo
   }
 
 /**
- * 
  * @param gitHubRepo - repository to search open pull request from
- * @returns 
+ * @returns ApiConfig - to make api calls to github api
  */
 async function getApiConfig(gitHubRepo: string): Promise<ApiConfig> {
 
