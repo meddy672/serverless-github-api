@@ -3,7 +3,7 @@ import { ssm } from '../../libs/ssmClient';
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { formatResponse } from '../../libs/apiGateway';
 import { OpenPullRequest, PullRequest, Logger, ApiConfig } from '../../../models/pulls.interface';
-import { STATUS_CODES, MESSAGE } from '../enums';
+import { STATUS_CODES, MESSAGE } from '../../libs/enums';
 
 
 /**
