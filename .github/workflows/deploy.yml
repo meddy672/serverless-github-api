@@ -42,7 +42,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Deploy
-        run: npm run deply
+        run: npm run deploy
         with:
           command: deploy
           args: -v
