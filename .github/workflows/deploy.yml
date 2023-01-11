@@ -42,7 +42,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: deploy
-        uses: "suprgames/serverless-github-action@v1.7"
+        uses: "suprgames/serverless-github-action@v1.77"
         with:
           command: deploy
           args: -v
