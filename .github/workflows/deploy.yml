@@ -4,8 +4,19 @@ on:
     branches:
       - main
 jobs:
+  lint:
+    environment: development
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Run lint
+        run: npm run lint
   test:
-    environment: testing
+    needs: lint
+    environment: development
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
