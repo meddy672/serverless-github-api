@@ -1,0 +1,7 @@
+{
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "queryStringParameters": {"gitHubRepo":"agenda/agenda" },
+  "body": "{\"name\": \"Frederic\"}"
+}
