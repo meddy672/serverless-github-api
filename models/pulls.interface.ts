@@ -51,6 +51,11 @@ export interface PullRequest {
     results: [] | OpenPullRequest[]
   }
 
+  export interface ApiConfig {
+    url: string,
+    config: {}
+  }
+
   export interface Logger {
     info: (...arg: any) => {};
     warn: (...arg: any) => {};

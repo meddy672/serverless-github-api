@@ -2,7 +2,7 @@ import http from '../../libs/axios';
 import { ssm } from '../../libs/ssmClient';
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { formatResponse } from '../../libs/apiGateway';
-import { OpenPullRequest, PullRequest, Logger } from '../../../models/pulls.interface';
+import { OpenPullRequest, PullRequest, Logger, ApiConfig } from '../../../models/pulls.interface';
 import { STATUS_CODES, MESSAGE } from '../enums';
 
 
@@ -86,7 +86,12 @@ export async function handleOpenPullRequestEvent(event: APIGatewayProxyEvent, lo
     });
   }
 
-async function getApiConfig(gitHubRepo: string): Promise<any> {
+/**
+ * 
+ * @param gitHubRepo - repository to search open pull request from
+ * @returns 
+ */
+async function getApiConfig(gitHubRepo: string): Promise<ApiConfig> {
 
   const token = await ssm.getParameter({
     Name: "/dev/ssm/githubapi/auth-token",
