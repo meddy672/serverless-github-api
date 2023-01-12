@@ -1,4 +1,4 @@
-import { middyfy } from '../../libs/lambda';
+import { middyfy } from './lambda';
 import { createLogger } from '../../libs/logger';
 import { APIGatewayProxyEvent, APIGatewayProxyResult, Handler } from 'aws-lambda';
 import { handleOpenPullRequestEvent } from './handlePullRequestEvent';
@@ -14,5 +14,6 @@ const pullRequest: Handler = (event: APIGatewayProxyEvent): Promise<APIGatewayPr
   logger.info('Incomming Event:', event);
   return handleOpenPullRequestEvent(event, logger);
 }
+
 
 export const main = middyfy(pullRequest);

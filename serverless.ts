@@ -20,10 +20,10 @@ const serverlessConfiguration: AWS = {
       lambda: true,
       apiGateway: true,
     },
-      
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
+      metrics: true
     },
     iamRoleStatements: [
       {
