@@ -1,4 +1,4 @@
-import { Body } from "models/pulls.interface";
+import { Body } from "../../models/interfaces/pulls.interface";
 import { APIGatewayProxyResult } from 'aws-lambda'
 
 /**
