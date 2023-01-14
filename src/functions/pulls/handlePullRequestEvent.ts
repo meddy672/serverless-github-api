@@ -6,6 +6,7 @@ import { OpenPullRequest, PullRequest, Logger, ApiConfig } from '../../../models
 import { STATUS_CODES, MESSAGE } from '../../libs/enums';
 
 
+
 /**
  * Get open pull request from a GitHub Repository
  * Requires event.queryStringParameters.gitHubRepo

@@ -10,15 +10,19 @@ const serverlessConfiguration: AWS = {
     'serverless-esbuild',
     'serverless-api-gateway-throttling',
     'serverless-iam-roles-per-function',
-    'serverless-plugin-tracing',
     'serverless-aws-documentation'
   ],
   useDotenv: true,
   provider: {
     name: 'aws',
+    logs: {
+      restApi: true
+    },
+    tags: {
+      
+    },
     runtime: 'nodejs14.x',
     tracing: {
-      lambda: true,
       apiGateway: true,
     },
     apiGateway: {

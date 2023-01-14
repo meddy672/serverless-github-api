@@ -22,7 +22,7 @@ export default {
         request: {
           parameters: {
             querystrings: {
-              githubRepo: true
+              gitHubRepo: true
             }
           }
         }
