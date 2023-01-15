@@ -11,7 +11,9 @@ const serverlessConfiguration: AWS = {
     'serverless-api-gateway-throttling',
     'serverless-iam-roles-per-function',
     'serverless-aws-documentation',
-    'serverless-plugin-aws-alerts'
+    'serverless-plugin-aws-alerts',
+    'serverless-dotenv-plugin',
+    'serverless-export-env'
   ],
   useDotenv: true,
   provider: {
@@ -45,7 +47,6 @@ const serverlessConfiguration: AWS = {
     },
     lambdaHashingVersion: '20201221',
   },
-  // import the function via paths
   functions: { pullrequest },
   package: { individually: true },
   custom: {
@@ -67,7 +68,13 @@ const serverlessConfiguration: AWS = {
       stages: ['dev', 'production'],
       topics: {
         alarm: {
-          topic: '${self:service}-dev-alerts-alarm'
+          topic: '${self:service}-dev-alerts-alarm',
+          notifications: [
+            {
+              protocol: 'email',
+              endpoint: '${env:SNS_ENDPOINT}'
+            }
+          ]
         }
       },
       alarms: ['functionErrors', 'functionThrottles']
