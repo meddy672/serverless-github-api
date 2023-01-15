@@ -7,32 +7,29 @@ A web service that fetches open pull request for a public repository. To fetch o
 
 
 This project has been generated using the `aws-nodejs-typescript` template from the [Serverless framework](https://www.serverless.com/). For detailed instructions, please refer to the [documentation](https://www.serverless.com/framework/docs/providers/aws/).
-## Testing remotely
-
-Download [Postman](https://www.postman.com/downloads/) and import the collection for the api.
-
-In Postman, select the collection options and click _Run Collection_. **Important! Do not change the URL which should be vw08kj393c**
-
-![img alt](./github_assets/Screenshot_20221222_100115.png)
-
-Click on the blue button that _Run Serverless GitHub API_.
-
-![img alt](./github_assets/Screenshot_20221222_100310.png)
-
-This will test an exsisting lambda function in the aws cloud.
-
-## Running unit test
-[Jest](https://jestjs.io/docs/getting-started) framework to execute unit test.
-```
-npm run test
-```
 
 ## Installation/deployment instructions
 
+**Required Software**
+- Node.js
+- AWS CLI 
+
+> **Requirements**: NodeJS `lts/fermium (v.14.15.0)`. If using [nvm](https://github.com/nvm-sh/nvm), run `nvm use` to ensure you're using the same Node version in local and in your lambda's runtime. You will need a GitHub Personal Access Token and add it as an [SSM Parameter](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html). You will only need the access public repo permission for the access token.
+
 Download or clone the repository and install the project.
+```bash
+git clone https://github.com/meddy672/serverless-github-api.git
+```
 
-> **Requirements**: NodeJS `lts/fermium (v.14.15.0)`. If using [nvm](https://github.com/nvm-sh/nvm), run `nvm use` to ensure you're using the same Node version in local and in your lambda's runtime. You will need a GitHub Personal Access Token and add it to the .env file AUTH_TOKEN. You will only need the access public repo permission for the access token.
+Install project dependencies
+```bash
+npm i
+```
 
+[Jest](https://jestjs.io/docs/getting-started) is used to execute unit test.
+```
+npm run test
+```
 ### Project structure
 
 The project code base is mainly located within the `src` folder. The main logic can be found in the [handler.ts](./src/functions//pulls/handler.ts)
@@ -46,20 +43,22 @@ The project code base is mainly located within the `src` folder. The main logic 
 ├── src
 │   ├── functions               # Lambda configuration and source code folder
 │   │   ├── pulls
-│   │   │   ├── handler.ts      # `Pulls` lambda source code
+│   │   │   ├── handler.ts      # `Pulls` lambda handler
+│   │   │   └── handlePullRequest.ts # `Pulls` lambda source code
 │   │   │   ├── axios.ts        # `Pulls` basic axios config
 │   │   │   ├── index.ts        # `Pulls` lambda Serverless configuration
 │   │   │   ├── mock.json       # `Pulls` lambda input parameter, if any, for local invocation
 │   │   │   └── schema.ts       # `Pulls` lambda input event JSON-Schema
 │   │   │
 │   │   └── index.ts            # Import/export of all lambda configurations
-│   │   └── enums.ts            # Static assets used for application data
 │   │
 │   └── libs                    # Lambda shared code
 │       └── apiGateway.ts       # API Gateway specific helpers
 │       └── handlerResolver.ts  # Sharable library for resolving lambda handlers
 │       └── lambda.ts           # Lambda middleware
 │       └── logger.ts           # Exports Winston logger
+│       └── enums.ts            # Static assets used for application data
+│       └── ssmClient.ts        # SSM Client to retrieve parameter values
 │
 ├── package.json
 ├── serverless.ts               # Serverless service file
