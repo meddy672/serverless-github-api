@@ -12,7 +12,7 @@ const serverlessConfiguration: AWS = {
     'serverless-iam-roles-per-function',
     'serverless-aws-documentation',
     'serverless-plugin-aws-alerts',
-    'serverless-api-gateway-caching',
+    'serverless-api-gateway-caching'
   ],
   // useDotenv: true,
   provider: {
@@ -71,7 +71,7 @@ const serverlessConfiguration: AWS = {
           notifications: [
             {
               protocol: 'email',
-              endpoint: `${process.env.SNS_ENDPOINT}`
+              endpoint: '${env:SNS_ENDPOINT}'
             }
           ]
         }

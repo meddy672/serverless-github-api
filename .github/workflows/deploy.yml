@@ -15,8 +15,8 @@ jobs:
       - name: Run lint
         run: npm run lint
   test:
-    needs: lint
     environment: development
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
@@ -31,15 +31,15 @@ jobs:
       - name: Run tests
         run: npm test
   deploy:
+    environment: development
+    needs: test
+    runs-on: ubuntu-latest
     env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID}}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       ACCOUNT: ${{ secrets.ACCOUNT }}
       SNS_ENDPOINT: ${{ secrets.SNS_ENDPOINT }}
       REGION: ${{ secrets.REGION }}
-    needs: test
-    environment: development
-    runs-on: ubuntu-latest
     steps:
       - name: Get Code
         uses: actions/checkout@v3

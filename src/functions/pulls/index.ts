@@ -10,7 +10,7 @@ export default {
     {
       Effect: "Allow",
       Action: ["ssm:GetParameter"],
-      Resource: `arn:aws:ssm:${process.env.REGION}:${process.env.ACCOUNT}:*`
+      Resource: 'arn:aws:ssm:${env:REGION}:${env:ACCOUNT}:*'
     }
   ],
   events: [
