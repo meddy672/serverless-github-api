@@ -73,7 +73,7 @@ const serverlessConfiguration: AWS = {
           notifications: [
             {
               protocol: 'email',
-              endpoint: '${env:SNS_ENDPOINT}'
+              endpoint: `${process.env.SNS_ENDPOINT}`
             }
           ]
         }
