@@ -23,12 +23,12 @@ git clone https://github.com/meddy672/serverless-github-api.git
 
 Install project dependencies
 ```bash
-npm i
+npm install
 ```
 
 [Jest](https://jestjs.io/docs/getting-started) is used to execute unit test.
-```
-npm run test
+```bash
+npm test
 ```
 ### Project structure
 
