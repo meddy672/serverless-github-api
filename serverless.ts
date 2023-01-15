@@ -13,8 +13,6 @@ const serverlessConfiguration: AWS = {
     'serverless-aws-documentation',
     'serverless-plugin-aws-alerts',
     'serverless-api-gateway-caching',
-    'serverless-dotenv-plugin',
-    'serverless-export-env'
   ],
   // useDotenv: true,
   provider: {
