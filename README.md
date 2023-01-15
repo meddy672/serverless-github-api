@@ -39,12 +39,11 @@ The project code base is mainly located within the `src` folder. The main logic 
 - `libs` - containing shared code base between your lambdas
 
 ```
-.
 ├── src
 │   ├── functions               # Lambda configuration and source code folder
 │   │   ├── pulls
 │   │   │   ├── handler.ts      # `Pulls` lambda handler
-│   │   │   └── handlePullRequest.ts # `Pulls` lambda source code
+│   │   │   └── handlePullRequestEvents.ts # `Pulls` lambda source code
 │   │   │   ├── axios.ts        # `Pulls` basic axios config
 │   │   │   ├── index.ts        # `Pulls` lambda Serverless configuration
 │   │   │   ├── mock.json       # `Pulls` lambda input parameter, if any, for local invocation
