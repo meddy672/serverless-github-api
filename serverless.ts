@@ -16,7 +16,7 @@ const serverlessConfiguration: AWS = {
     'serverless-dotenv-plugin',
     'serverless-export-env'
   ],
-  useDotenv: true,
+  // useDotenv: true,
   provider: {
     name: 'aws',
     stage: '${opt:stage, "dev"}',
