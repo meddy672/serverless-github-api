@@ -10,16 +10,18 @@ const serverlessConfiguration: AWS = {
     'serverless-esbuild',
     'serverless-api-gateway-throttling',
     'serverless-iam-roles-per-function',
-    'serverless-aws-documentation'
+    'serverless-aws-documentation',
+    'serverless-plugin-aws-alerts'
   ],
   useDotenv: true,
   provider: {
     name: 'aws',
+    stage: '${opt:stage, "dev"}',
     logs: {
       restApi: true
     },
     tags: {
-      
+
     },
     runtime: 'nodejs14.x',
     tracing: {
@@ -60,6 +62,15 @@ const serverlessConfiguration: AWS = {
     apiGatewayThrottling: {  	
       maxRequestsPerSecond: 1000,
       maxConcurrentRequests: 500
+    },
+    alerts: {
+      stages: ['dev', 'production'],
+      topics: {
+        alarm: {
+          topic: '${self:service}-dev-alerts-alarm'
+        }
+      },
+      alarms: ['functionErrors', 'functionThrottles']
     }
   },
 };

@@ -46,6 +46,7 @@
     "serverless-dotenv-plugin": "^4.0.2",
     "serverless-esbuild": "^1.23.3",
     "serverless-iam-roles-per-function": "^3.2.0",
+    "serverless-plugin-aws-alerts": "^1.7.5",
     "serverless-plugin-tracing": "^2.0.0",
     "serverless-ssm-fetch": "^1.1.2",
     "ts-jest": "^29.0.3",
