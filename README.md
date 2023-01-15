@@ -58,7 +58,8 @@ The project code base is mainly located within the `src` folder. The main logic 
 │       └── logger.ts           # Exports Winston logger
 │       └── enums.ts            # Static assets used for application data
 │       └── ssmClient.ts        # SSM Client to retrieve parameter values
-│
+|
+├── test                        # Unit test
 ├── package.json
 ├── serverless.ts               # Serverless service file
 ├── tsconfig.json               # Typescript compiler configuration
