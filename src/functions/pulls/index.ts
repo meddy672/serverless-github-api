@@ -19,6 +19,7 @@ export default {
         method: 'get',
         path: 'github/pullrequest',
         cors: true,
+        caching: { enabled: true },
         request: {
           parameters: {
             querystrings: {

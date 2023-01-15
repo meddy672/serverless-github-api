@@ -12,6 +12,7 @@ const serverlessConfiguration: AWS = {
     'serverless-iam-roles-per-function',
     'serverless-aws-documentation',
     'serverless-plugin-aws-alerts',
+    'serverless-api-gateway-caching',
     'serverless-dotenv-plugin',
     'serverless-export-env'
   ],
@@ -21,9 +22,6 @@ const serverlessConfiguration: AWS = {
     stage: '${opt:stage, "dev"}',
     logs: {
       restApi: true
-    },
-    tags: {
-
     },
     runtime: 'nodejs14.x',
     tracing: {
@@ -59,6 +57,9 @@ const serverlessConfiguration: AWS = {
       define: { 'require.resolve': undefined },
       platform: 'node',
       concurrency: 10,
+    },
+    apiGatewayCaching: {
+      enabled: true
     },
     apiGatewayThrottling: {  	
       maxRequestsPerSecond: 1000,

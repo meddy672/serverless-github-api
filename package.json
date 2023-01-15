@@ -20,6 +20,7 @@
     "aws-xray-sdk": "^3.4.1",
     "aws-xray-sdk-core": "^3.4.1",
     "axios": "^1.2.1",
+    "serverless-api-gateway-caching": "^1.10.1",
     "winston": "^3.8.2"
   },
   "devDependencies": {
