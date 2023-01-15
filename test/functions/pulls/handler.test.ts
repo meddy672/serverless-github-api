@@ -59,11 +59,11 @@ jest.mock('../../../src/libs/ssmClient', () => {
 
 const context: Context = {
     callbackWaitsForEmptyEventLoop: true,
-    functionName: '',
+    functionName: 'pullRequest',
     functionVersion: '',
-    invokedFunctionArn: '',
-    memoryLimitInMB: '',
-    awsRequestId: '',
+    invokedFunctionArn: 'us-east-1:123456789012',
+    memoryLimitInMB: '256',
+    awsRequestId: 'db6839f0-7ca9-4044-a217-74ee2ab853c7',
     logGroupName: '',
     logStreamName: '',
     done: () => { },
@@ -71,6 +71,8 @@ const context: Context = {
     succeed: () => { },
     getRemainingTimeInMillis: () => 1
 };
+
+
 
 describe('hello.handler', () => {
 
@@ -108,7 +110,11 @@ describe('hello.handler', () => {
             jest.restoreAllMocks();
         });
         test('returns statusCode 200 and body with mappedPullRequest', async () => {
-            const result = await main({ queryStringParameters: { gitHubRepo: 'agenda/agenda' } }, context)
+            const event: any = {
+                requestContext: { requestId: '6cd0ee77-1564-4bba-862e-849756b5db53'},
+                queryStringParameters: { gitHubRepo: 'agenda/agenda' }
+            }
+            const result = await main(event, context)
             expect(result).toEqual({
                 statusCode: 200,
                 body: JSON.stringify({
@@ -130,7 +136,12 @@ describe('hello.handler', () => {
             });
         });
         test('returns statusCode 400 and message when queryStringParameters is not defined', async () => {
-            const result = await main({ queryStringParameters: undefined }, context)
+            const event: any = {
+                requestContext: { requestId: '6cd0ee77-1564-4bba-862e-849756b5db53'},
+                queryStringParameters: { gitHubRepo: 'agenda/agenda' }
+            }
+            event.queryStringParameters = undefined;
+            const result = await main(event, context)
             expect(result).toEqual({
                 statusCode: 400,
                 body: JSON.stringify({
@@ -144,7 +155,12 @@ describe('hello.handler', () => {
             });
         });
         test('returns statusCode 400 and message when gitHubRepo is not defined', async () => {
-            const result = await main({ queryStringParameters: {} }, context)
+            const event: any = {
+                requestContext: { requestId: '6cd0ee77-1564-4bba-862e-849756b5db53'},
+                queryStringParameters: { gitHubRepo: 'agenda/agenda' }
+            }
+            event.queryStringParameters = {};
+            const result = await main(event, context)
             expect(result).toEqual({
                 statusCode: 400,
                 body: JSON.stringify({
@@ -190,7 +206,11 @@ describe('hello.handler', () => {
         });
 
         test('returns statusCode 500', async () => {
-            const result = await main({ queryStringParameters: { gitHubRepo: 'agenda/agenda' } }, context);
+            const event: any = {
+                requestContext: { requestId: '6cd0ee77-1564-4bba-862e-849756b5db53'},
+                queryStringParameters: { gitHubRepo: 'agenda/agenda' }
+            }
+            const result = await main(event, context);
             expect(result).toEqual({
                 statusCode: 500,
                 body: JSON.stringify({
@@ -218,7 +238,11 @@ describe('hello.handler', () => {
         });
         
         test('returns statusCode 200 with correct message', async () => {
-            const result = await main({ queryStringParameters: { gitHubRepo: 'agenda/agenda' } }, context);
+            const event: any = {
+                requestContext: { requestId: '6cd0ee77-1564-4bba-862e-849756b5db53'},
+                queryStringParameters: { gitHubRepo: 'agenda/agenda' }
+            }
+            const result = await main(event, context);
             expect(result).toEqual({
                 statusCode: 200,
                 body: JSON.stringify({
