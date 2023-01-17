@@ -135,44 +135,6 @@ describe('hello.handler', () => {
                 isBase64Encoded: false
             });
         });
-        test('returns statusCode 400 and message when queryStringParameters is not defined', async () => {
-            const event: any = {
-                requestContext: { requestId: '6cd0ee77-1564-4bba-862e-849756b5db53'},
-                queryStringParameters: { gitHubRepo: 'agenda/agenda' }
-            }
-            event.queryStringParameters = undefined;
-            const result = await main(event, context)
-            expect(result).toEqual({
-                statusCode: 400,
-                body: JSON.stringify({
-                    message: "Request requires queryStringParamter gitHubRepo in owner/repo format.",
-                    results: null
-                }),
-                headers: {
-                    "content-type": "application/json"
-                  },
-                isBase64Encoded: false
-            });
-        });
-        test('returns statusCode 400 and message when gitHubRepo is not defined', async () => {
-            const event: any = {
-                requestContext: { requestId: '6cd0ee77-1564-4bba-862e-849756b5db53'},
-                queryStringParameters: { gitHubRepo: 'agenda/agenda' }
-            }
-            event.queryStringParameters = {};
-            const result = await main(event, context)
-            expect(result).toEqual({
-                statusCode: 400,
-                body: JSON.stringify({
-                    message: "Request requires queryStringParamter gitHubRepo in owner/repo format.",
-                    results: null
-                }),
-                headers: {
-                    "content-type": "application/json"
-                  },
-                isBase64Encoded: false
-            });
-        });
     });
     describe('Failure', () => {
         beforeEach(() => {

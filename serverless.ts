@@ -14,7 +14,6 @@ const serverlessConfiguration: AWS = {
     'serverless-plugin-aws-alerts',
     'serverless-api-gateway-caching'
   ],
-  // useDotenv: true,
   provider: {
     name: 'aws',
     stage: '${opt:stage, "dev"}',
@@ -71,7 +70,7 @@ const serverlessConfiguration: AWS = {
           notifications: [
             {
               protocol: 'email',
-              endpoint: '${env:SNS_ENDPOINT}'
+              endpoint: 'example@email.com'
             }
           ]
         }

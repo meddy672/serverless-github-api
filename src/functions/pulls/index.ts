@@ -10,7 +10,7 @@ export default {
     {
       Effect: "Allow",
       Action: ["ssm:GetParameter"],
-      Resource: 'arn:aws:ssm:${env:REGION}:${env:ACCOUNT}:*'
+      Resource: `arn:aws:ssm:us-east-1:275855030009:*`
     }
   ],
   events: [
@@ -19,7 +19,7 @@ export default {
         method: 'get',
         path: 'github/pullrequest',
         cors: true,
-        caching: { enabled: true },
+        caching: { enabled: true},
         request: {
           parameters: {
             querystrings: {
