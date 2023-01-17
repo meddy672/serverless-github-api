@@ -14,14 +14,6 @@ import { STATUS_CODES, MESSAGE } from '../../libs/enums';
  * @returns Promise<Response> - satusCode and body
  */
 export async function handleOpenPullRequestEvent(event: APIGatewayProxyEvent, logger: Logger): Promise<APIGatewayProxyResult> {
-
-    if (!event.queryStringParameters || !event.queryStringParameters.gitHubRepo) {
-      logger.warn('Invalid GitHubRepo');
-      return formatResponse(STATUS_CODES.BAD_REQUEST, {
-        message: MESSAGE.INVALID_GITHUB_URL,
-        results: null
-      });
-    }
   
     const { gitHubRepo } = event.queryStringParameters;
     logger.info('GitHubRepo:', gitHubRepo);
