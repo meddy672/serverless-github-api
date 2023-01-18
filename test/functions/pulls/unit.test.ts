@@ -74,7 +74,7 @@ const context: Context = {
 
 
 
-describe('hello.handler', () => {
+describe('pulls.handler', () => {
 
     describe('Success', () => {
         beforeEach(() => {

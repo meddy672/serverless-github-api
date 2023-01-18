@@ -12,8 +12,10 @@ const serverlessConfiguration: AWS = {
     'serverless-iam-roles-per-function',
     'serverless-aws-documentation',
     'serverless-plugin-aws-alerts',
-    'serverless-api-gateway-caching'
+    'serverless-api-gateway-caching',
+    'serverless-export-env'
   ],
+  // useDotenv: true,
   provider: {
     name: 'aws',
     stage: '${opt:stage, "dev"}',
@@ -39,6 +41,9 @@ const serverlessConfiguration: AWS = {
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
+      API_URL: {
+        'Fn::Sub': 'https://${ApiGatewayRestApi}.execute-api.${AWS::Region}.amazonaws.com/${sls:stage}/github/pullrequest'
+      }
     },
     lambdaHashingVersion: '20201221',
   },
@@ -62,11 +67,19 @@ const serverlessConfiguration: AWS = {
       maxRequestsPerSecond: 1000,
       maxConcurrentRequests: 500
     },
+    exportEnv: {
+      overwrite: true
+    },
+    outPuts: {
+      RestaurantsTable: {
+        Value: '!Ref RestaurantsTable'
+      }
+    },
     alerts: {
       stages: ['dev', 'production'],
       topics: {
         alarm: {
-          topic: '${self:service}-dev-alerts-alarm',
+          topic: '${self:service}-${sls:stage}-alerts-alarm',
           notifications: [
             {
               protocol: 'email',

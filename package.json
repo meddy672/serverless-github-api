@@ -4,9 +4,10 @@
   "description": "Serverless application that uses github api",
   "main": "serverless.ts",
   "scripts": {
-    "test": "jest",
-    "deploy": "serverless deploy",
-    "lint": "eslint --fix --ext .ts src/**"
+    "test": "cross-env NODE_ENV=test && jest",
+    "deploy": "npm run dotEnv && serverless deploy",
+    "lint": "eslint --fix --ext .ts src/**",
+    "dotEnv": "sls export-env --all"
   },
   "engines": {
     "node": ">=14.15.0"
@@ -20,6 +21,7 @@
     "aws-xray-sdk": "^3.4.1",
     "aws-xray-sdk-core": "^3.4.1",
     "axios": "^1.2.1",
+    "lodash": "^4.17.21",
     "serverless-api-gateway-caching": "^1.10.1",
     "winston": "^3.8.2"
   },
@@ -33,6 +35,7 @@
     "@typescript-eslint/parser": "^5.47.0",
     "aws-sdk": "^2.1291.0",
     "aws-sdk-mock": "^5.8.0",
+    "cross-env": "^7.0.3",
     "esbuild": "^0.14.11",
     "eslint": "^8.30.0",
     "eslint-config-standard-with-typescript": "^24.0.0",
