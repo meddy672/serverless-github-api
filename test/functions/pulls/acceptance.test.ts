@@ -18,9 +18,9 @@ const context: Context = {
 
 describe('pulls.handler', () => {
 
-    describe('When we invoke the function handler', () => {
+    describe('When we invoke the function from apigateway', () => {
 
-        test('returns statusCode 200 with correct message', async () => {
+        test(`GET '/githubapi/pullrequest' returns statusCode 200 with correct message`, async () => {
             const event: any = {
                 requestContext: { requestId: '6cd0ee77-1564-4bba-862e-849756b5db53'},
                 queryStringParameters: { gitHubRepo: 'agenda/agenda' }

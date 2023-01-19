@@ -4,8 +4,9 @@
   "description": "Serverless application that uses github api",
   "main": "serverless.ts",
   "scripts": {
-    "test": "cross-env NODE_ENV=test && jest",
-    "single-test": "cross-env NODE_ENV=test && jest -- -t integration",
+    "test": "npm run dotEnv && cross-env NODE_ENV=test TEST_MODE=handler jest",
+    "single-test": "npm run dotEnv && cross-env NODE_ENV=test TEST_MODE=http jest -- -t acceptance",
+    "acceptance": "npm run dotEnv && cross-env NODE_ENV=test TEST_MODE=http jest",
     "deploy": "npm run dotEnv && serverless deploy",
     "lint": "eslint --fix --ext .ts src/**",
     "dotEnv": "sls export-env --all"
