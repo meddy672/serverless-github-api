@@ -26,7 +26,6 @@ describe('pulls.handler', () => {
                 queryStringParameters: { gitHubRepo: 'agenda/agenda' }
             }
             const result = await when.we_invoke_get_pull_request(event, context);
-            console.log(result);
             expect(result).toBeDefined()
             expect(result.body).toBeDefined()
             expect(result.statusCode).toEqual(200)
