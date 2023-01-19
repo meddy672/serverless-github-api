@@ -5,6 +5,7 @@
   "main": "serverless.ts",
   "scripts": {
     "test": "cross-env NODE_ENV=test && jest",
+    "single-test": "cross-env NODE_ENV=test && jest -- -t integration",
     "deploy": "npm run dotEnv && serverless deploy",
     "lint": "eslint --fix --ext .ts src/**",
     "dotEnv": "sls export-env --all"

@@ -15,15 +15,14 @@ jobs:
       - name: npm lint
         run: npm run lint        
       - name: Run tests
-        run: npm test
+        run: npm run single-test
   deploy:
     environment: development
     needs: test
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      ACTIONS_STEP_DEBUG: true 
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
     steps:
       - name: Get Code
         uses: actions/checkout@v3

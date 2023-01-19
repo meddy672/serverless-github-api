@@ -53,7 +53,7 @@ export async function handleOpenPullRequestEvent(event: APIGatewayProxyEvent, lo
       logger.error('Unable to process request:', error);
       return formatResponse(STATUS_CODES.INTERNAL_SERVER_ERROR, {
         message: MESSAGE.UNABLE_TO_PROCESS_REQUEST,
-        results: null
+        results: error
       });
     }
   }

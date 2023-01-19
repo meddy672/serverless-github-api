@@ -1,6 +1,5 @@
 import { Context } from "aws-lambda";
 import when from '../../steps/when';
-import _axios from "../../../src/libs/axios";
 
 const context: Context = {
     callbackWaitsForEmptyEventLoop: true,
