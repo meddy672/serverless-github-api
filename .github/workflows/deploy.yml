@@ -4,28 +4,16 @@ on:
     branches:
       - main
 jobs:
-  lint:
-    environment: development
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get Code
-        uses: actions/checkout@v3
-      - name: Install dependencies
-        run: npm ci
-      - name: Run lint
-        run: npm run lint
   test:
     environment: development
-    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
         uses: actions/checkout@v3
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: npm-deps-${{ hashFiles('**/package-lock.json') }}
+      - name: npm install
+        run: npm ci
+      - name: npm lint
+        run: npm run lint        
       - name: Run tests
         run: npm test
   deploy:
@@ -35,13 +23,10 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      ACCOUNT: ${{ secrets.ACCOUNT }}
-      SNS_ENDPOINT: ${{ secrets.SNS_ENDPOINT }}
-      REGION: ${{ secrets.REGION }}
     steps:
       - name: Get Code
         uses: actions/checkout@v3
-      - name: Install dependencies
+      - name: npm install
         run: npm ci
       - name: Deploy
         run: npm run deploy
