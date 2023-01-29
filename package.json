@@ -34,7 +34,7 @@
     "@types/jest": "^29.2.4",
     "@types/node": "^14.14.25",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
-    "@typescript-eslint/parser": "^5.47.0",
+    "@typescript-eslint/parser": "^5.49.0",
     "aws-sdk": "^2.1291.0",
     "aws-sdk-mock": "^5.8.0",
     "cross-env": "^7.0.3",
