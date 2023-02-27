@@ -30,7 +30,7 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.18.6",
     "@serverless/typescript": "^2.23.0",
-    "@types/aws-lambda": "^8.10.71",
+    "@types/aws-lambda": "^8.10.111",
     "@types/jest": "^29.2.4",
     "@types/node": "^18.14.2",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
