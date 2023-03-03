@@ -35,7 +35,7 @@
     "@types/node": "^18.14.2",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.54.0",
-    "aws-sdk": "^2.1291.0",
+    "aws-sdk": "^2.1327.0",
     "aws-sdk-mock": "^5.8.0",
     "cross-env": "^7.0.3",
     "esbuild": "^0.17.10",
