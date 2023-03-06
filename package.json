@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.21.0",
-    "@serverless/typescript": "^2.23.0",
+    "@serverless/typescript": "^3.27.0",
     "@types/aws-lambda": "^8.10.111",
     "@types/jest": "^29.2.4",
     "@types/node": "^18.14.5",
