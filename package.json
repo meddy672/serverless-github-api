@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@middy/core": "^4.2.6",
-    "@middy/http-json-body-parser": "^4.2.6",
+    "@middy/http-json-body-parser": "^4.2.7",
     "@middy/validator": "^4.2.6",
     "@serverless/cloud": "^2.11.6",
     "aws-embedded-metrics": "^4.1.0",
