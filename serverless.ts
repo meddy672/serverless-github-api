@@ -5,7 +5,7 @@ import pullrequest from '@functions/pulls';
 const serverlessConfiguration: AWS = {
   service: 'serverless-github-api',
   org: 'meddy672',
-  frameworkVersion: '2',
+  frameworkVersion: '3',
   plugins: [
     'serverless-esbuild',
     'serverless-api-gateway-throttling',
