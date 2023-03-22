@@ -50,7 +50,7 @@
     "serverless-api-gateway-throttling": "^2.0.3",
     "serverless-aws-documentation": "^1.1.0",
     "serverless-dotenv-plugin": "^6.0.0",
-    "serverless-esbuild": "^1.39.0",
+    "serverless-esbuild": "^1.42.0",
     "serverless-export-env": "github:arabold/serverless-export-env",
     "serverless-iam-roles-per-function": "^3.2.0",
     "serverless-plugin-aws-alerts": "^1.7.5",
