@@ -15,7 +15,7 @@
     "node": ">=14.15.0"
   },
   "dependencies": {
-    "@middy/core": "^4.2.7",
+    "@middy/core": "^4.2.8",
     "@middy/http-json-body-parser": "^4.2.7",
     "@middy/validator": "^4.2.6",
     "@serverless/cloud": "^2.11.6",
